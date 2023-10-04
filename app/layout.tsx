@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StarshipsProvider from './providers/StarshipsProvider';
 import '@/styles/globals.scss';
 
 const noto = Noto_Sans({
@@ -24,9 +25,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={noto.className}>
-                <Header imgUrl="/logo.png" />
-                <main>{children}</main>
-                <Footer />
+                <StarshipsProvider>
+                    <Header imgUrl="/logo.png" />
+                    <main>{children}</main>
+                    <Footer />
+                </StarshipsProvider>
             </body>
         </html>
     );
