@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+#
+# Automatically adds branch name to every commit message
+#
+NAME=$(git branch | grep '*' | sed 's/* //')
+echo "$NAME"': '$(cat "$1") > "$1"

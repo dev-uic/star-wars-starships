@@ -1,0 +1,43 @@
+@import '../styles/base/all';
+
+.footer {
+    padding: $spacing-md 0;
+    background-color: $secondary;
+    color: $white;
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: $spacing;
+
+        @media screen and (min-width: $md) {
+            flex-direction: row;
+        }
+
+        @media screen and (min-width: $lg) {
+            padding: 0 $footer-gutter;
+        }
+    }
+
+    &__link {
+        margin-bottom: $spacing-xs;
+        font-weight: 700;
+        text-decoration: underline;
+
+        @media screen and (min-width: $md) {
+            &:not(:last-child) {
+                margin-right: $spacing-md;
+            }
+        }
+    }
+
+    &__copy {
+        @media screen and (min-width: $lg) {
+            padding: 0 $footer-gutter;
+        }
+
+        p {
+            margin-bottom: $spacing;
+        }
+    }
+}

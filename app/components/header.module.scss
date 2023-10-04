@@ -1,0 +1,14 @@
+@import '@/styles/base/all';
+
+.header {
+    padding: $spacing-xs 0;
+    background-color: $primary;
+
+    @media screen and (min-width: $lg) {
+        padding: $spacing 0;
+    }
+
+    &__logo {
+        display: block;
+    }
+}
