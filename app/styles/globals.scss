@@ -20,8 +20,8 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    color: $secondary;
-    background-color: $light-grey;
+    color: $white;
+    background-color: $secondary;
     font-size: $font-body;
 }
 
@@ -65,4 +65,8 @@ footer {
 .page-heading {
     margin-bottom: $spacing-md;
     font-size: $font-h1;
+}
+
+.ui.card {
+    width: auto;
 }

@@ -2,28 +2,45 @@
 
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-// import styles from './panel.module.scss';
+import Starship from './Starship';
 
-interface StarshipsWrapperProps {
+export interface StarshipsWrapperProps {
+    MGLT: string;
     name: string;
     model: string;
-    films: number;
-    crew: string;
+    films: [];
+    crew: string | number;
 }
 
-const StarshipsWrapper = ({
-    name,
-    model,
-    films,
-    crew,
-}: StarshipsWrapperProps) => {
+interface CrewData {
+    crew: string | number;
+}
+
+const StarshipsWrapper = () => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['starshipdata'],
         queryFn: async () => {
             const { data } = await axios.get('https://swapi.dev/api/starships');
             const { results } = data;
 
-            return results as StarshipsWrapperProps[];
+            // Convert crew values from strings to Number
+            const convertCrewToNumber = (
+                array: StarshipsWrapperProps[]
+            ): StarshipsWrapperProps[] => {
+                return array.map((obj) => {
+                    if (typeof obj.crew === 'string') {
+                        obj.crew = Number(obj.crew.replace(/[,|-]/, ''));
+                    }
+
+                    return obj;
+                });
+            };
+
+            const resultsFormatted = convertCrewToNumber(results).filter(
+                (obj) => +obj.crew < 11
+            );
+
+            return resultsFormatted as StarshipsWrapperProps[];
         },
     });
 
@@ -34,9 +51,9 @@ const StarshipsWrapper = ({
 
     return (
         <div className="content">
-            <div>inside starships wrapper</div>
+            <h1>Starships</h1>
             {data.map((starship) => {
-                return <p>{starship.name}</p>;
+                return <Starship key={starship.name} {...starship} />;
             })}
         </div>
     );
