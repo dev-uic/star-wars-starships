@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Star Wars Tech Exercise (A NextJS Site)
+
+## Tech Stack
+
+- Next v13
+- React v18
+- Node v18
+- Typescript v5.2.2
+- Prettier
+- SASS
+- JEST/React Testing Library
+- Storybook v7
 
 ## Getting Started
 
